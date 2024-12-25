@@ -10,7 +10,7 @@ import jakarta.inject.Singleton;
 import software.amazonaws.example.product.dao.ProductDao;
 
 
-//@Singleton
+@Singleton
 public class ProductAPIResourceWithDynamoDBRequestPriming implements OrderedResource  {
 
 	private final ProductDao productDao;
