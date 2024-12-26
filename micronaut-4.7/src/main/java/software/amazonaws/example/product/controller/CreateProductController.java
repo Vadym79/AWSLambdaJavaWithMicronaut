@@ -7,20 +7,18 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Put;
+import jakarta.inject.Inject;
 import software.amazonaws.example.product.dao.ProductDao;
 import software.amazonaws.example.product.entity.Product;
 
 @Controller
 public class CreateProductController {
-  private final ProductDao productDao;
 
-  public CreateProductController(ProductDao productDao) {
-    this.productDao = productDao;
-  }
+	@Inject
+	private ProductDao productDao;
 
-  @Put("/products")
-  public void createUpdateProduct(@Body Product product) {
-    productDao.putProduct(product);
-  }
- 
+	@Put("/products")
+	public void createUpdateProduct(@Body Product product) {
+		productDao.putProduct(product);
+	}
 }

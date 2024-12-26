@@ -8,6 +8,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.inject.Inject;
+
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
@@ -18,13 +20,10 @@ import software.amazonaws.example.product.entity.Product;
 @Controller
 public class GetProductByIdController {
 
-  private final ProductDao productDao;
+  @Inject
+  private ProductDao productDao;
   
   private static final Logger logger = LoggerFactory.getLogger(GetProductByIdController.class);
-
-  public GetProductByIdController(ProductDao productDao) {
-    this.productDao = productDao;
-  }
  
   @Get("/products/{id}")
   public Optional<Product> getProductById(@PathVariable String id) {
