@@ -15,10 +15,10 @@
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<packaging>jar</packaging>
+		<packaging>${packaging}</packaging>
 		<jdk.version>21</jdk.version>
 		<release.version>21</release.version>
+		<micronaut.version>4.7.3</micronaut.version>
 		<exec.mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</exec.mainClass>
 		<micronaut.aot.enabled>false</micronaut.aot.enabled>
 		<micronaut.aot.packageName>example.micronaut.aot.generated</micronaut.aot.packageName>
@@ -100,62 +100,63 @@
 		</dependencies>
 	</dependencyManagement>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>io.micronaut.maven</groupId>
-        <artifactId>micronaut-maven-plugin</artifactId>
-        <configuration>
-          <configFile>aot-${packaging}.properties</configFile>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-        <version>2.43.0</version>
-        <configuration>
-          <java>
-              <licenseHeader>
-                  <file>${project.basedir}/LICENSEHEADER</file>
-              </licenseHeader>
-          </java>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <!-- Uncomment to enable incremental compilation -->
-          <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.micronaut.maven</groupId>
+				<artifactId>micronaut-maven-plugin</artifactId>
+				<configuration>
+					<configFile>aot-${packaging}.properties</configFile>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.43.0</version>
+				<configuration>
+					<java>
+						<licenseHeader>
+							<file>${project.basedir}/LICENSEHEADER</file>
+						</licenseHeader>
+					</java>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- Uncomment to enable incremental compilation -->
+					<!--
+					<useIncrementalCompilation>false</useIncrementalCompilation> -->
 
-          <annotationProcessorPaths combine.children="append">
-            <path>
-              <groupId>io.micronaut</groupId>
-              <artifactId>micronaut-http-validation</artifactId>
-              <version>${micronaut.core.version}</version>
-            </path>
-            <path>
-              <groupId>io.micronaut.serde</groupId>
-              <artifactId>micronaut-serde-processor</artifactId>
-              <version>${micronaut.serialization.version}</version>
-              <exclusions>
-                <exclusion>
-                  <groupId>io.micronaut</groupId>
-                  <artifactId>micronaut-inject</artifactId>
-                </exclusion>
-              </exclusions>
-            </path>
-          </annotationProcessorPaths>
-          <compilerArgs>
-            <arg>-Amicronaut.processing.group=example.micronaut</arg>
-            <arg>-Amicronaut.processing.module=default</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+					<annotationProcessorPaths combine.children="append">
+						<path>
+							<groupId>io.micronaut</groupId>
+							<artifactId>micronaut-http-validation</artifactId>
+							<version>${micronaut.core.version}</version>
+						</path>
+						<path>
+							<groupId>io.micronaut.serde</groupId>
+							<artifactId>micronaut-serde-processor</artifactId>
+							<version>${micronaut.serialization.version}</version>
+							<exclusions>
+								<exclusion>
+									<groupId>io.micronaut</groupId>
+									<artifactId>micronaut-inject</artifactId>
+								</exclusion>
+							</exclusions>
+						</path>
+					</annotationProcessorPaths>
+					<compilerArgs>
+						<arg>-Amicronaut.processing.group=example.micronaut</arg>
+						<arg>-Amicronaut.processing.module=default</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
