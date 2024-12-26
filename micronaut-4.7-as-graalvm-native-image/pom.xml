@@ -6,7 +6,7 @@
 	<groupId>software.amazonaws.example</groupId>
 	<artifactId>aws-lambda-as-graavlvm-native-image-micronaut-4.7</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>native-image</packaging>
+	<packaging>${packaging}</packaging>
 
 	<parent>
 		<groupId>io.micronaut.platform</groupId>
@@ -106,7 +106,7 @@
         <groupId>io.micronaut.maven</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
         <configuration>
-          <configFile>aot-native-image.properties</configFile>
+          <configFile>aot-${packaging}.properties</configFile>
         </configuration>
       </plugin>
       <plugin>
