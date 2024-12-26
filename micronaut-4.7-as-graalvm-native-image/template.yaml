@@ -11,7 +11,7 @@ Parameters:
     
 Globals:
   Function:
-    CodeUri: target/aws-lambdaas-graalvm-native-image-micronaut-4.7-1.0.0-SNAPSHOT.jar
+    CodeUri: target/function.zip
     Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
     Runtime: provided.al2023  
     Timeout: 30 

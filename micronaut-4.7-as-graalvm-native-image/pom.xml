@@ -33,6 +33,11 @@
 
 	<dependencies>
 		<dependency>
+			<dependency>
+				<groupId>io.micronaut</groupId>
+				<artifactId>micronaut-http-client-jdk</artifactId>
+				<scope>compile</scope>
+			</dependency>
 			<groupId>io.micronaut</groupId>
 			<artifactId>micronaut-inject</artifactId>
 			<scope>compile</scope>
