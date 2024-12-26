@@ -19,7 +19,10 @@
 		<packaging>jar</packaging>
 		<jdk.version>21</jdk.version>
 		<release.version>21</release.version>
-		<exec.mainClass>software.amazonaws.example.Application</exec.mainClass>
+		<exec.mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</exec.mainClass>
+		<micronaut.aot.enabled>false</micronaut.aot.enabled>
+		<micronaut.aot.packageName>example.micronaut.aot.generated</micronaut.aot.packageName>
+		<micronaut.runtime>lambda</micronaut.runtime>
 	</properties>
 
 	<repositories>
@@ -43,6 +46,11 @@
 		<dependency>
 			<groupId>io.micronaut.aws</groupId>
 			<artifactId>micronaut-function-aws-api-proxy</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut.aws</groupId>
+			<artifactId>micronaut-function-aws-custom-runtime</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -121,7 +129,8 @@
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
 				<configuration>
-					<imageName>aws-lambda-as-graavlvm-native-image-micronaut-4.7-app</imageName>
+					<imageName>
+						aws-lambda-as-graavlvm-native-image-micronaut-4.7-app</imageName>
 				</configuration>
 			</plugin>
 			<plugin>
