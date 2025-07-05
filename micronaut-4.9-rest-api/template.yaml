@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  AWS Lambda with Micronaut 4.9
+  AWS Lambda with Micronaut 4.9 Rest API
   Sample SAM Template 
 
 Parameters:
@@ -11,7 +11,8 @@ Parameters:
     
 Globals:
   Function:
-    CodeUri: target/aws-lambda-micronaut-4.9-1.0.0-SNAPSHOT.jar
+    CodeUri: target/aws-lambda-micronaut-4.9-rest-api-1.0.0-SNAPSHOT.jar
+    Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
     Runtime: java21
     #SnapStart:
      #ApplyOn: PublishedVersions     
@@ -29,8 +30,8 @@ Resources:
     DependsOn: MyApiCWLRoleArn 
     Properties:
       StageName: !Ref Stage
-      Name: AWSLambdaMicronaut49API
-      Description: Api for AWS Lambda Micronaut 4.9 API
+      Name: AWSLambdaMicronaut49RestAPI
+      Description: Api for AWS Lambda Micronaut 4.9 Rest API
       AccessLogSetting:
         DestinationArn: !Sub ${MyApiLogGroup.Arn} # This Log Group is already created within our SAM Template
         Format: "{'integrationLatency':'$context.integrationLatency', 'latency':'$context.responseLatency', 'requestId':'$context.requestId', 'ip': '$context.identity.sourceIp', 'caller':'$context.identity.caller', 'user':'$context.identity.user','requestTime':'$context.requestTime', 'xrayTraceId':'$context.xrayTraceId', 'wafResponseCode':'$context.wafResponseCode', 'httpMethod':'$context.httpMethod','resourcePath':'$context.resourcePath', 'status':'$context.status','protocol':'$context.protocol', 'responseLength':'$context.responseLength' }"
@@ -79,8 +80,8 @@ Resources:
       ApiStages: 
         - ApiId: !Ref MyApi
           Stage: !Ref Stage
-      UsagePlanName: AWSLambdaMicronaut49APIUsagePlan
-      Description: Usage plan for AWSLambdaMicronaut49APIUsagePlan
+      UsagePlanName: AWSLambdaMicronaut49RestAPIUsagePlan
+      Description: Usage plan for AWSLambdaMicronaut49RestAPIUsagePlan
       Quota:
           Limit: 2000000
           Period: DAY
@@ -93,11 +94,11 @@ Resources:
     DependsOn:  
        - MyApiStage
     Properties: 
-      Name: "AWSLambdaMicronaut49ApiKey"
-      Description: "AWSLambdaMicronaut49ApiKey API Key"
+      Name: "AWSLambdaMicronaut49RestApiKey"
+      Description: "AWSLambdaMicronaut49RestApiKey API Key"
       Enabled: true
       GenerateDistinctId: false
-      Value: a6ZbcDefQW12BN56WEM49
+      Value: a6ZbcDefQW12BN56WEM49Rest
       StageKeys:
         - RestApiId: !Ref MyApi
           StageName: !Ref Stage
@@ -115,8 +116,7 @@ Resources:
   GetProductByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: GetProductByIdWithWithMicronaut49
-      Handler: software.amazonaws.example.product.handler.GetProductByIdHandler::execute
+      FunctionName: GetProductByIdWithWithMicronaut49Rest
       AutoPublishAlias: liveVersion
       Policies:
         - DynamoDBReadPolicy:
@@ -139,8 +139,7 @@ Resources:
   PutProductFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: PutProductWithMicronaut49
-      Handler: software.amazonaws.example.product.handler.CreateProductHandler::execute
+      FunctionName: PutProductWithMicronaut49Rest
       AutoPublishAlias: liveVersion 
       Policies:
         - DynamoDBCrudPolicy:
@@ -162,7 +161,7 @@ Resources:
   ProductsTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: "AWSLambdaMicronaut49ProductsTable"
+      TableName: "AWSLambdaMicronaut49RestProductsTable"
       PointInTimeRecoverySpecification:
          PointInTimeRecoveryEnabled: true
       AttributeDefinitions:
@@ -179,6 +178,6 @@ Resources:
       
 
 Outputs:
-  AWSLambdaMicronaut49ApiEndpoint:
-    Description: "API Gateway endpoint URL for Prod stage for AWS Lambda Micronaut 4.9 API"
+  AWSLambdaMicronaut49RestApiEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage for AWS Lambda Micronaut 4.9 Rest API"
     Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/prod/products"

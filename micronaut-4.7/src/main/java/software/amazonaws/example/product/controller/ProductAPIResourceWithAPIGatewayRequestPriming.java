@@ -13,7 +13,6 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent.
 
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction;
-import jakarta.inject.Singleton;
 
 //@Singleton
 public class ProductAPIResourceWithAPIGatewayRequestPriming implements OrderedResource  {
@@ -23,7 +22,6 @@ public class ProductAPIResourceWithAPIGatewayRequestPriming implements OrderedRe
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
     	logger.info("entered api gateway priming before checkpoint method");
-    	
     	try (ApiGatewayProxyRequestEventFunction apiGatewayProxyRequestEventFunction = new ApiGatewayProxyRequestEventFunction()) {
     		apiGatewayProxyRequestEventFunction.handleRequest(getAwsProxyRequest(), new MockLambdaContext());
 		}

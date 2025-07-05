@@ -1,15 +1,11 @@
 package software.amazonaws.example.product.controller;
 
-import java.util.Map;
-
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent.ProxyRequestContext;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent.RequestIdentity;
 
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction;
@@ -22,7 +18,7 @@ public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResou
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-    	logger.info("entered api gateway priming before checkpoint method");
+    	logger.info("entered api gateway rest api priming before checkpoint method");
     	try (ApiGatewayProxyRequestEventFunction apiGatewayProxyRequestEventFunction = new ApiGatewayProxyRequestEventFunction()) {
     		apiGatewayProxyRequestEventFunction.handleRequest(getAwsProxyRequest(), new MockLambdaContext());
 		}

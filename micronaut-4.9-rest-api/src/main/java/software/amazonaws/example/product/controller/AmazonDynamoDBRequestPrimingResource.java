@@ -13,6 +13,7 @@ import software.amazonaws.example.product.dao.ProductDao;
 
 //@Singleton
 public class AmazonDynamoDBRequestPrimingResource
+//implements OrderedResource
 {
 
 	@Inject
@@ -22,7 +23,7 @@ public class AmazonDynamoDBRequestPrimingResource
 	
     //@Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-    	logger.info("entered dynamo db request priming before checkpoint method");
+    	logger.info("entered rest api dynamodb request priming before checkpoint method");
     	this.productDao.getProduct("0");
     }
 
