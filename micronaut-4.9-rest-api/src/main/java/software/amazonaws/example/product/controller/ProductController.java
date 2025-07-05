@@ -26,7 +26,7 @@ public class ProductController {
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
 	@Put("/products")
-	public void createUpdateProduct(@Body Product product) {
+	public void createProduct(@Body Product product) {
 		productDao.putProduct(product);
 	}
 
