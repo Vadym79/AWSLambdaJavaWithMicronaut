@@ -8,12 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+//import com.amazonaws.services.lambda.runtime.serialization.events.LambdaEventSerializers;
 
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.json.JsonMapper;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+
 
 @Singleton
 public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResource  {
@@ -31,10 +32,11 @@ public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResou
     	APIGatewayProxyRequestEvent requestEvent = LambdaEventSerializers
 				.serializerFor(APIGatewayProxyRequestEvent.class, ClassLoader.getSystemClassLoader())
 				.fromJson(getAPIGatewayProxyRequestEventAsJson());
-				*/
-    	APIGatewayProxyRequestEvent requestEvent=this.getAPIGatewayProxyRequestEvent();
+				
 		logger.info("req event: " + requestEvent);
-		APIGatewayProxyResponseEvent execute = new GetProductByIdHandler().execute(requestEvent);
+		
+		new GetProductByIdHandler().execute(requestEvent);
+		*/
     }
 
        
