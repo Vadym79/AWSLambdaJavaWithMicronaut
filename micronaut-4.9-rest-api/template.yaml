@@ -14,8 +14,8 @@ Globals:
     CodeUri: target/aws-lambda-micronaut-4.9-rest-api-1.0.0-SNAPSHOT.jar
     Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
     Runtime: java21
-    #SnapStart:
-     #ApplyOn: PublishedVersions     
+    SnapStart:
+     ApplyOn: PublishedVersions     
     
     Timeout: 30 
     MemorySize: 1024
