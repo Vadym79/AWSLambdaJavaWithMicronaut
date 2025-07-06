@@ -16,6 +16,42 @@ import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
 
+/**
+ * This type of priming doesn't work together with Micronaut Serialization
+ * (Serde) In order to make it run, please comment these 2 dependencies in
+ * pom.xml 
+ * <!-- 
+ * <dependency> 
+ *    <groupId>io.micronaut.serde</groupId>
+ *    <artifactId>micronaut-serde-jackson</artifactId> 
+ *    <scope>compile</scope>
+ * </dependency> 
+ * <dependency> 
+ *    <groupId>io.micronaut.aws</groupId>
+ *    <artifactId>micronaut-aws-lambda-events-serde</artifactId>
+ *    <scope>compile</scope> 
+ * </dependency> --> 
+ * 
+ * and uncomment these 2
+ * 
+ * <dependency> 
+ *    <groupId>io.micronaut</groupId>
+ *    <artifactId>micronaut-jackson-databind</artifactId> 
+ *    <scope>runtime</scope>
+ * </dependency> 
+ * <dependency> 
+ *    <groupId>com.amazonaws</groupId>
+ *    <artifactId>aws-lambda-java-serialization
+ *    </artifactId> 
+ * </dependency>
+ * 
+ * Also remove these 2 annotations from Product.java
+ * @Serdeable.Deserializable
+ * @Serdeable.Serializable
+ * 
+ * and uncomment the whole code in the beforeCheckpoint 
+ */
+
 @Singleton
 public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResource  {
 
