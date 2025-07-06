@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-//import com.amazonaws.services.lambda.runtime.serialization.events.LambdaEventSerializers;
+import com.amazonaws.services.lambda.runtime.serialization.events.LambdaEventSerializers;
 
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.json.JsonMapper;
@@ -17,41 +17,16 @@ import jakarta.inject.Singleton;
 
 
 /**
- * This type of priming doesn't work together with Micronaut Serialization
- * (Serde) In order to make it run, please comment these 2 dependencies in
- * pom.xml 
- * <!-- 
- * <dependency> 
- *    <groupId>io.micronaut.serde</groupId>
- *    <artifactId>micronaut-serde-jackson</artifactId> 
- *    <scope>compile</scope>
- * </dependency> 
- * <dependency> 
- *    <groupId>io.micronaut.aws</groupId>
- *    <artifactId>micronaut-aws-lambda-events-serde</artifactId>
- *    <scope>compile</scope> 
- * </dependency> --> 
+ * For this type of priming, please uncomment this dependency in pom.xml
  * 
- * and uncomment these 2
- * 
- * <dependency> 
- *    <groupId>io.micronaut</groupId>
- *    <artifactId>micronaut-jackson-databind</artifactId> 
- *    <scope>runtime</scope>
- * </dependency> 
  * <dependency> 
  *    <groupId>com.amazonaws</groupId>
  *    <artifactId>aws-lambda-java-serialization
  *    </artifactId> 
  * </dependency>
- * 
- * Also remove these 2 annotations from Product.java
- * @Serdeable.Deserializable
- * @Serdeable.Serializable
- * 
- * and uncomment the whole code in the beforeCheckpoint 
+ *
+ *  This dependency not required for other Lambda SnapStart priming techniques
  */
-
 @Singleton
 public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResource  {
 
@@ -62,17 +37,14 @@ public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResou
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-    	logger.info("entered api gateway rest api priming before checkpoint method");
+    	logger.info("entered API gateway priming before checkpoint method");
     	
-    	/*
     	APIGatewayProxyRequestEvent requestEvent = LambdaEventSerializers
-				.serializerFor(APIGatewayProxyRequestEvent.class, ClassLoader.getSystemClassLoader())
+				.serializerFor(APIGatewayProxyRequestEvent.class, AmazonAPIGatewayProxyRequestPrimingResource.class.getClassLoader())
 				.fromJson(getAPIGatewayProxyRequestEventAsJson());
 				
-		logger.info("req event: " + requestEvent);
-		
+		logger.info("APi Gateway proxy request event: " + requestEvent);
 		new GetProductByIdHandler().execute(requestEvent);
-		*/
     }
 
        
