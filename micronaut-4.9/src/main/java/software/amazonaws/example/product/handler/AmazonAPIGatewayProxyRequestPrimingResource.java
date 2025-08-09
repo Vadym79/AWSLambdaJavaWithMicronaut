@@ -28,14 +28,17 @@ import jakarta.inject.Singleton;
  *  This dependency not required for other Lambda SnapStart priming techniques
  */
 @Singleton
-public class AmazonAPIGatewayProxyRequestPrimingResource implements OrderedResource  {
+public class AmazonAPIGatewayProxyRequestPrimingResource 
+implements OrderedResource 
+{
 
 	@Inject
 	private JsonMapper objectMapper;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AmazonAPIGatewayProxyRequestPrimingResource.class);
 
-    @Override
+    @SuppressWarnings("resource")
+	@Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
     	logger.info("entered API gateway priming before checkpoint method");
     	
