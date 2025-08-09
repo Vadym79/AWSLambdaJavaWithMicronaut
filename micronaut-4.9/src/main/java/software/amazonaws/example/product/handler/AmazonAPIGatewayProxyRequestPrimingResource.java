@@ -16,17 +16,6 @@ import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
 
-/**
- * For this type of priming, please uncomment this dependency in pom.xml
- * 
- * <dependency> 
- *    <groupId>com.amazonaws</groupId>
- *    <artifactId>aws-lambda-java-serialization
- *    </artifactId> 
- * </dependency>
- *
- *  This dependency not required for other Lambda SnapStart priming techniques
- */
 @Singleton
 public class AmazonAPIGatewayProxyRequestPrimingResource 
 implements OrderedResource 
