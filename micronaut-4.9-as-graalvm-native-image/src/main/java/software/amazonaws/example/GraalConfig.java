@@ -12,6 +12,7 @@ import software.amazonaws.example.product.entity.Products;
 import io.micronaut.core.annotation.ReflectionConfig;
 
 
+/*
 @ReflectionConfig(type = APIGatewayProxyRequestEvent.class)
 @ReflectionConfig(type = APIGatewayProxyRequestEvent.ProxyRequestContext.class)
 @ReflectionConfig(type = APIGatewayProxyRequestEvent.RequestIdentity.class)
@@ -21,6 +22,8 @@ import io.micronaut.core.annotation.ReflectionConfig;
 @ReflectionConfig(type = GetProductByIdHandler.class)
 @ReflectionConfig(type = Product.class)
 @ReflectionConfig(type = Products.class)
+
+*/
 
 public class GraalConfig {
 
