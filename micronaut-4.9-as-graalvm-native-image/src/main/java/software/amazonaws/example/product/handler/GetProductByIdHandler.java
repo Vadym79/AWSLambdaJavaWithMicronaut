@@ -16,14 +16,15 @@ import io.micronaut.json.JsonMapper;
 import jakarta.inject.Inject;
 import software.amazon.awssdk.http.HttpStatusCode;
 import software.amazonaws.example.product.dao.ProductDao;
+import software.amazonaws.example.product.dao.DynamoProductDao;
 import software.amazonaws.example.product.entity.Product;
 
 
 public class GetProductByIdHandler extends
 		MicronautRequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>  {
 
-	@Inject
-	private ProductDao productDao;
+	
+	private ProductDao productDao = new DynamoProductDao();
 
 	@Inject
 	private JsonMapper objectMapper;
