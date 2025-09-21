@@ -12,7 +12,7 @@ Parameters:
 Globals:
   Function:
     CodeUri: target/function.zip
-	Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
+    Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
     Runtime: provided.al2023  
     Timeout: 30 
     MemorySize: 1024
@@ -112,7 +112,7 @@ Resources:
   GetProductByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: GetProductByIdWithWithMicronaut49GVMNIRest
+      FunctionName: GetProductByIdWithMicronaut49GVMNIRest
       AutoPublishAlias: liveVersion
       Policies:
         - DynamoDBReadPolicy:
