@@ -25,5 +25,20 @@
     "allPublicConstructors": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent",
+    "allPublicConstructors": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$ProxyRequestContext",
+    "allPublicConstructors": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$RequestIdentity",
+    "allPublicConstructors": true,
+    "allDeclaredFields": true
   }
- ]
+]
