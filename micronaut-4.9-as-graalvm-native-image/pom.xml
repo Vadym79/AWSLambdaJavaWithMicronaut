@@ -156,10 +156,11 @@
 				<version>0.11.0</version>
 				<configuration>
 					<imageName>aws-lambda-as-graalvm-native-image-micronaut</imageName>
+					<mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</mainClass>
 					<buildArgs>
-						--no-fallback
-						--enable-http
-						-H:ReflectionConfigurationFiles=../src/main/reflect.json
+					     <buildArg>--no-fallback</buildArg>
+						 <buildArg>--enable-http</buildArg>
+						 <buildArg>-H:ReflectionConfigurationFiles=../src/main/reflect.json</buildArg>
 					</buildArgs>
 				</configuration>
 			</plugin>
