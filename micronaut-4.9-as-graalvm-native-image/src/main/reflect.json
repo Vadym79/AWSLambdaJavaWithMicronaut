@@ -15,6 +15,11 @@
     "allDeclaredFields": true
   },
   {
+    "name": "java.util.HashSet",
+    "allPublicConstructors": true,
+    "allDeclaredFields": true
+  },
+  {
     "name": "software.amazonaws.example.product.entity.Product",
     "allPublicConstructors": true,
     "allDeclaredFields": true,
