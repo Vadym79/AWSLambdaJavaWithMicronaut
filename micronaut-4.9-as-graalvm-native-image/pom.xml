@@ -43,11 +43,6 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.micronaut.crac</groupId>
-			<artifactId>micronaut-crac</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>io.micronaut.aws</groupId>
 			<artifactId>micronaut-function-aws-api-proxy</artifactId>
 			<scope>compile</scope>
