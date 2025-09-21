@@ -26,6 +26,18 @@
     "allPublicMethods": true
   },
   {
+    "name": "software.amazonaws.example.product.dao.DynamoProductDao",
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "software.amazonaws.example.product.dao.ProductDao",
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
     "name": "software.amazonaws.example.product.entity.Products",
     "allPublicConstructors": true,
     "allDeclaredFields": true,
