@@ -136,7 +136,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: PutProductWithMicronaut49GVMNI
-      Handler: software.amazonaws.example.product.handler.GetProductByIdHandler::execute
+      Handler: software.amazonaws.example.product.handler.CreateProductHandler::execute
       AutoPublishAlias: liveVersion 
       Policies:
         - DynamoDBCrudPolicy:

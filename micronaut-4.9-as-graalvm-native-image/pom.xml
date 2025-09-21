@@ -178,6 +178,7 @@
 				</executions>
 				<configuration>
 					<finalName>function</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
 					<descriptors>
 						<descriptor>src/assembly/native.xml</descriptor>
 					</descriptors>
