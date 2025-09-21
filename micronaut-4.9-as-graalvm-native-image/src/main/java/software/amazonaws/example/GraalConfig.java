@@ -1,11 +1,9 @@
 package software.amazonaws.example;
 
 import java.util.HashSet;
-
-
 import org.joda.time.DateTime;
-
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
+
 import io.micronaut.core.annotation.ReflectionConfig;
 
 
