@@ -33,7 +33,9 @@ public class GetProductByIdHandler extends
 
 	@Override
 	public APIGatewayProxyResponseEvent execute(APIGatewayProxyRequestEvent requestEvent) {
+		logger.info(" get product");
 		String id = requestEvent.getPathParameters().get("id");
+		logger.info(" get product byid"+id);
 		Optional<Product> optionalProduct = productDao.getProduct(id);
 		try {
 			if (optionalProduct.isEmpty()) {
