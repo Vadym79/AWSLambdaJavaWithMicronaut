@@ -4,6 +4,7 @@
 package software.amazonaws.example.product.handler;
 
 import java.util.Optional;
+import io.micronaut.core.annotation.Introspected;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,15 +17,15 @@ import io.micronaut.json.JsonMapper;
 import jakarta.inject.Inject;
 import software.amazon.awssdk.http.HttpStatusCode;
 import software.amazonaws.example.product.dao.ProductDao;
-import software.amazonaws.example.product.dao.DynamoProductDao;
 import software.amazonaws.example.product.entity.Product;
 
-
+@Introspected
 public class GetProductByIdHandler extends
 		MicronautRequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>  {
 
 	
-	private ProductDao productDao = new DynamoProductDao();
+	@Inject
+	private ProductDao productDao;
 
 	@Inject
 	private JsonMapper objectMapper;
