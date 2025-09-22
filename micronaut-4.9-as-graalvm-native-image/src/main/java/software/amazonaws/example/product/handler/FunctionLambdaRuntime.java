@@ -12,8 +12,6 @@ public class FunctionLambdaRuntime extends AbstractMicronautLambdaRuntime<APIGat
 {
     public static void main(String[] args) {
         try {
-        	for(String arg: args)
-        	System.out.println("arg: "+arg);
             new FunctionLambdaRuntime().run(args);
 
         } catch (MalformedURLException e) {
@@ -25,6 +23,6 @@ public class FunctionLambdaRuntime extends AbstractMicronautLambdaRuntime<APIGat
     @Nullable
     protected RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> createRequestHandler(String... args) {
 
-        return new GetProductByIdHandler();
+	    return new GetProductByIdHandler();
     }
 }

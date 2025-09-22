@@ -16,10 +16,10 @@ import software.amazonaws.example.product.entity.Product;
 public class CreateProductHandler extends MicronautRequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
 	@Inject
-	private ProductDao productDao;
+	ProductDao productDao;
 	
 	@Inject
-	private JsonMapper objectMapper;
+	JsonMapper objectMapper;
 
 	@Override
 	public APIGatewayProxyResponseEvent execute(APIGatewayProxyRequestEvent requestEvent) {

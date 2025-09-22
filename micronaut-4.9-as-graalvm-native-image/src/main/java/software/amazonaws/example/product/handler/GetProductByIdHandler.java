@@ -4,8 +4,6 @@
 package software.amazonaws.example.product.handler;
 
 import java.util.Optional;
-import io.micronaut.core.annotation.Introspected;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,25 +17,24 @@ import software.amazon.awssdk.http.HttpStatusCode;
 import software.amazonaws.example.product.dao.ProductDao;
 import software.amazonaws.example.product.entity.Product;
 
-@Introspected
+
 public class GetProductByIdHandler extends
 		MicronautRequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>  {
 
 	
 	@Inject
-	private ProductDao productDao;
+	ProductDao productDao;
 
-	@Inject
-	private JsonMapper objectMapper;
+    @Inject
+	JsonMapper objectMapper;
+
 
 	private static final Logger logger = LoggerFactory.getLogger(GetProductByIdHandler.class);
 
 
 	@Override
 	public APIGatewayProxyResponseEvent execute(APIGatewayProxyRequestEvent requestEvent) {
-		logger.info(" get product");
 		String id = requestEvent.getPathParameters().get("id");
-		logger.info(" get product byid"+id);
 		Optional<Product> optionalProduct = productDao.getProduct(id);
 		try {
 			if (optionalProduct.isEmpty()) {
