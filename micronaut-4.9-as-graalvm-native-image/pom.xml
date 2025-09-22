@@ -17,11 +17,12 @@
 	<properties>
 		<jdk.version>25</jdk.version>
 		<release.version>25</release.version>
-		<micronaut.version>4.9.3</micronaut.version>
+		<!--
 		<exec.mainClass>software.amazonaws.example.product.handler.FunctionLambdaRuntime</exec.mainClass>
 		<micronaut.aot.enabled>false</micronaut.aot.enabled>
 		<micronaut.aot.packageName>example.micronaut.aot.generated</micronaut.aot.packageName>
 		<micronaut.runtime>lambda</micronaut.runtime>
+		-->
 	</properties>
 
 	<repositories>
