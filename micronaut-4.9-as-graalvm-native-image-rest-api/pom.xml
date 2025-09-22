@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>software.amazonaws.example</groupId>
-	<artifactId>aws-lambda-as-graalvm-native-image-micronaut-4.9</artifactId>
+	<artifactId>aws-lambda-as-graalvm-native-image-micronaut-4.9-rest-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>${packaging}</packaging>
 
@@ -18,8 +18,8 @@
 		<jdk.version>25</jdk.version>
 		<release.version>25</release.version>
 		<!--
-		<exec.mainClass>software.amazonaws.example.product.handler.FunctionLambdaRuntime</exec.mainClass>
-		<micronaut.aot.enabled>false</micronaut.aot.enabled>
+		 <exec.mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</exec.mainClass>
+	     <micronaut.aot.enabled>false</micronaut.aot.enabled>
 		<micronaut.aot.packageName>example.micronaut.aot.generated</micronaut.aot.packageName>
 		<micronaut.runtime>lambda</micronaut.runtime>
 		-->
@@ -157,7 +157,7 @@
 				<version>0.11.0</version>
 				<configuration>
 					<imageName>aws-lambda-as-graalvm-native-image-micronaut</imageName>
-					<mainClass>software.amazonaws.example.product.handler.FunctionLambdaRuntime</mainClass>
+					<mainClass>io.micronaut.function.aws.runtime.MicronautLambdaRuntime</mainClass>
 					<buildArgs>
 					     <buildArg>--no-fallback</buildArg>
 						 <buildArg>--enable-http</buildArg>
