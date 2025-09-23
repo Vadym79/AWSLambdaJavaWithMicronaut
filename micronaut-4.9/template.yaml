@@ -115,7 +115,7 @@ Resources:
   GetProductByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: GetProductByIdWithWithMicronaut49
+      FunctionName: GetProductByIdWithMicronaut49
       Handler: software.amazonaws.example.product.handler.GetProductByIdHandler::execute
       AutoPublishAlias: liveVersion
       Policies:
