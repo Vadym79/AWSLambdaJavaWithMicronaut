@@ -1,6 +1,0 @@
-applicationType: default
-defaultPackage: example.micronaut
-testFramework: junit
-sourceLanguage: java
-buildTool: maven
-features: [app-name, aws-lambda, aws-lambda-custom-runtime, aws-lambda-events-serde, aws-lambda-handler-default, graalvm, http-client-jdk, http-client-test, java, junit, logback, maven, maven-enforcer-plugin, micronaut-aot, micronaut-http-validation, properties, readme, serialization-jackson, shade, spotless, static-resources, x86]
