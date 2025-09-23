@@ -116,7 +116,7 @@ Resources:
   GetProductByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: GetProductByIdWithWithMicronaut49Rest
+      FunctionName: GetProductByIdWithMicronaut49Rest
       AutoPublishAlias: liveVersion
       Policies:
         - DynamoDBReadPolicy:
